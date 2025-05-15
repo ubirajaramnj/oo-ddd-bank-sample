@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Oo.Ddd.Bank.ConsoleApp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

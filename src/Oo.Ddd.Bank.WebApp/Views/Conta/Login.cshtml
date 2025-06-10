@@ -1,0 +1,12 @@
+﻿@model ContaModel
+<form asp-action="Login" method="post">
+    <div>
+        <label>Número da Conta:</label>
+        <input asp-for="NumeroConta" />
+    </div>
+    <div>
+        <label>Senha:</label>
+        <input asp-for="Senha" type="password" />
+    </div>
+    <button type="submit">Acessar</button>
+</form>

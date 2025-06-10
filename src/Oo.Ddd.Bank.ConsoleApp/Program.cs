@@ -23,8 +23,8 @@ clienteLuiz.AdicionarDocumento("RG", "1234567891");
 contaRepository.Adicionar(ContaFactory.Conta(clienteLuiz, 2));
 
 //Cliente Zé solicita uma transferência para o cliente Luiz de 20
-TransferenciaEntreContas transferencia = 
-    new TransferenciaEntreContas(contaRepository, new TransferenciaService());
+TransferenciaEntreContasApplicationService transferencia = 
+    new TransferenciaEntreContasApplicationService(contaRepository);
 
 transferencia.Transferir(1, 2, 20);
 

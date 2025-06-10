@@ -1,0 +1,7 @@
+﻿@model TransferenciaModel
+<h2>Comprovante de Transferência</h2>
+<p>Banco: @Model.Banco</p>
+<p>Agência: @Model.Agencia</p>
+<p>Conta Destino: @Model.NumeroContaDestino</p>
+<p>Valor: @Model.Valor.ToString("C")</p>
+<a asp-action="Saldo">Voltar</a>

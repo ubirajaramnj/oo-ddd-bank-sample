@@ -1,5 +1,6 @@
 ﻿using Oo.Ddd.Bank.Domain.Model;
 using Oo.Ddd.Bank.Domain.Model.Repository;
+using Oo.Ddd.Bank.Infrastructure.InMemoryDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +9,15 @@ using System.Threading.Tasks;
 
 namespace Oo.Ddd.Bank.ApplicationLayer
 {
-    public class TransferenciaEntreContas
+    public class TransferenciaEntreContasApplicationService
     {
         private IContaRepository _contaRepository;
         private TransferenciaService _transferenciaServices;
 
-        public TransferenciaEntreContas(IContaRepository contaRepository, 
-            TransferenciaService transferenciaService)
+        public TransferenciaEntreContasApplicationService(IContaRepository contaRepository)
         {
             _contaRepository = contaRepository;
-            _transferenciaServices = transferenciaService;
+            _transferenciaServices = new TransferenciaService();
         }
 
         public bool Transferir(int numeroContaOrigem, int numeroContaDestino, double valor)

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Oo.Ddd.Bank.Domain\Oo.Ddd.Bank.Domain.csproj" />
+    <ProjectReference Include="..\Oo.Ddd.Bank.Infrastructure.InMemory\Oo.Ddd.Bank.Infrastructure.InMemoryDb.csproj" />
   </ItemGroup>
 
 </Project>

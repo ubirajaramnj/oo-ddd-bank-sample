@@ -1,0 +1,20 @@
+﻿@model TransferenciaModel
+<form asp-action="Transferir" method="post">
+    <div>
+        <label>Banco:</label>
+        <input asp-for="Banco" />
+    </div>
+    <div>
+        <label>Agência:</label>
+        <input asp-for="Agencia" />
+    </div>
+    <div>
+        <label>Número da Conta Destino:</label>
+        <input asp-for="NumeroContaDestino" />
+    </div>
+    <div>
+        <label>Valor:</label>
+        <input asp-for="Valor" />
+    </div>
+    <button type="submit">Executar Transferência</button>
+</form>

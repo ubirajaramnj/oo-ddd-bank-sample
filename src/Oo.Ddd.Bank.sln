@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oo.Ddd.Bank.WebApp", "Oo.Dd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oo.Ddd.Bank.Api", "Oo.Ddd.Bank.Api\Oo.Ddd.Bank.Api.csproj", "{007FA544-D1C0-4498-A0D6-A27297881A78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider", "Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider\Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider.csproj", "{90090E8D-2F39-47F9-A53F-C9FA0381F2F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{007FA544-D1C0-4498-A0D6-A27297881A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{007FA544-D1C0-4498-A0D6-A27297881A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{007FA544-D1C0-4498-A0D6-A27297881A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90090E8D-2F39-47F9-A53F-C9FA0381F2F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90090E8D-2F39-47F9-A53F-C9FA0381F2F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90090E8D-2F39-47F9-A53F-C9FA0381F2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90090E8D-2F39-47F9-A53F-C9FA0381F2F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{51B72C78-E22F-4EAC-937C-022B5DD68BDD} = {9470D3FA-3731-4501-AEAE-A8D32C7F3012}
 		{654D5398-12A7-4C03-A7CD-9AD2FC4512A8} = {3809CCF6-BD8A-4B59-8727-1FFB821A363F}
 		{007FA544-D1C0-4498-A0D6-A27297881A78} = {50BF1BA6-36CA-42DB-B708-57E88BFB9859}
+		{90090E8D-2F39-47F9-A53F-C9FA0381F2F0} = {9470D3FA-3731-4501-AEAE-A8D32C7F3012}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C494594B-254F-42B5-911A-D3FEADF27DE3}

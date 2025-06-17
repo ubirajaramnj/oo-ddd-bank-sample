@@ -2,7 +2,7 @@
 {
     public class Transacao
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public DateTime Data { get; set; }
         public double Valor { get; set; }
         public string Tipo { get; set; }

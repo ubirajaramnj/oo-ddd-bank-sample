@@ -3,6 +3,7 @@ namespace Oo.Ddd.Bank.Domain.Model
 {
     public class Cliente
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public virtual List<Documento> Documentos { get; set; } = [];
 

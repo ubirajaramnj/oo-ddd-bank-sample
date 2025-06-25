@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Oo.Ddd.Bank.Api.Dto;
 using Oo.Ddd.Bank.ApplicationLayer;
 using Oo.Ddd.Bank.ApplicationLayer.TestSetup;
+using Oo.Ddd.Bank.Domain.Model.Repository;
 using Oo.Ddd.Bank.Infrastructure.InMemoryDb;
 
 namespace Oo.Ddd.Bank.Api.Controllers
@@ -12,12 +13,12 @@ namespace Oo.Ddd.Bank.Api.Controllers
     public class ContaController : ControllerBase
     {
         private readonly ILogger<TransferenciaController> _logger;
-        private static ContaRepository _contaRepository;
+        private IContaRepository _contaRepository;
         
-        public ContaController(ILogger<TransferenciaController> logger)
+        public ContaController(ILogger<TransferenciaController> logger, IContaRepository contaRepository)
         {
             _logger = logger;
-            _contaRepository = TesteEnvSetup.Instance;
+            _contaRepository = contaRepository;
         }
 
         [HttpGet("{conta}")]

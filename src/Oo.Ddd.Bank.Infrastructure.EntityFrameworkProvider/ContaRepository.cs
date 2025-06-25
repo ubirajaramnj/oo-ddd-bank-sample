@@ -22,19 +22,20 @@ namespace Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider
             _context.Contas.Add(conta);
         }
 
-        public Especial ObterEspecialPorNumero(int numeroConta)
+        public void Update(Conta conta)
         {
-            return _context.Especiais
+            _context.Contas.Update(conta);
+        }
+
+        public Especial ObterEspecialPorNumero(int numeroConta) => _context.Especiais
                 .Where(c => c.Numero == numeroConta)
                 .OfType<Especial>()
                 .FirstOrDefault();
-        }
 
         public Conta ObterPorNumero(int numeroConta)
         {
             return _context.Contas
                 .Where(c => c.Numero == numeroConta)
-                .OfType<Especial>()
                 .FirstOrDefault();
         }
 
@@ -42,5 +43,10 @@ namespace Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider
         {
             throw new NotImplementedException();
         }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }   
     }
 }

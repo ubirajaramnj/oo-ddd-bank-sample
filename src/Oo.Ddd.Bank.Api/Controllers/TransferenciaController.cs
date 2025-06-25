@@ -1,22 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Oo.Ddd.Bank.Api.Dto;
 using Oo.Ddd.Bank.ApplicationLayer;
-using Oo.Ddd.Bank.ApplicationLayer.TestSetup;
-using Oo.Ddd.Bank.Infrastructure.InMemoryDb;
+using Oo.Ddd.Bank.Domain.Model.Repository;
 
 namespace Oo.Ddd.Bank.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class TransferenciaController : ControllerBase
 {
     private readonly ILogger<TransferenciaController> _logger;
-    private static ContaRepository _contaRepository;
+    private IContaRepository _contaRepository;
 
-    public TransferenciaController(ILogger<TransferenciaController> logger)
+    public TransferenciaController(ILogger<TransferenciaController> logger, IContaRepository contaRepository)
     {
         _logger = logger;
-        _contaRepository = TesteEnvSetup.Instance;
+        _contaRepository = contaRepository;
     }
 
     [HttpPost]
@@ -24,8 +23,7 @@ public class TransferenciaController : ControllerBase
     {
         try
         {
-            TransferenciaEntreContasApplicationService transferenciaEntreContas = new(
-            _contaRepository);
+            TransferenciaEntreContasApplicationService transferenciaEntreContas = new(_contaRepository);
 
             bool resultado = transferenciaEntreContas.Transferir(transferenciaReq.NumeroDaContaDeOrigem,
                             transferenciaReq.NumeroDaContaDeDestino, transferenciaReq.Valor);

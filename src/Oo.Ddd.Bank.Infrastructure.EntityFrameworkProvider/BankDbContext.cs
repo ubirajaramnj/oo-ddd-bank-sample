@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Oo.Ddd.Bank.Domain.Model;
+using Oo.Ddd.Bank.Domain.Model.Factory;
 
 namespace Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider
 {
@@ -28,8 +29,7 @@ namespace Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(BankDbContext).Assembly);
-
+            
             modelBuilder.Entity<Cliente>(c =>
             {
                 c.HasKey(c => c.Id);
@@ -60,6 +60,7 @@ namespace Oo.Ddd.Bank.Infrastructure.EntityFrameworkProvider
             modelBuilder.Entity<Transacao>()
                 .ToTable("Transacoes")
                 .HasKey(c => c.Id);
+
         }
     }
 }

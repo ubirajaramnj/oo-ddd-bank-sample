@@ -6,5 +6,9 @@
         public string Senha { get; set; }
     }
 
-
+    public class LoginRes
+    {
+        public string Message { get; set; }
+        public string Token { get; set; }
+    }
 }

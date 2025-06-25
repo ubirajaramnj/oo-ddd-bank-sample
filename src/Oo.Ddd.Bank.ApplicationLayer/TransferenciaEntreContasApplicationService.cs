@@ -24,10 +24,12 @@ namespace Oo.Ddd.Bank.ApplicationLayer
         {
             try
             {
-                Conta contaOrigem = _contaRepository.ObterPorNumero(numeroContaOrigem);
+                Especial contaOrigem = _contaRepository.ObterEspecialPorNumero(numeroContaOrigem);
                 Conta contaDestino = _contaRepository.ObterPorNumero(numeroContaDestino);
 
                 _transferenciaServices.Transferir(contaOrigem, contaDestino, valor);
+
+                _contaRepository.Save();
 
                 return true;
             }

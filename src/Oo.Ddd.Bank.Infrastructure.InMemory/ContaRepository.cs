@@ -35,5 +35,11 @@ namespace Oo.Ddd.Bank.Infrastructure.InMemoryDb
         {
             return ["Conta", "Especial"]; //Reflection
         }
+
+        public void Save()
+        {
+            // In-memory repository does not require saving
+            // This method can be used to implement any additional logic if needed
+        }
     }
 }

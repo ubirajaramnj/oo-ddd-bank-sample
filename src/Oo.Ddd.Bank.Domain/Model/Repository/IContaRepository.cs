@@ -21,8 +21,10 @@ namespace Oo.Ddd.Bank.Domain.Model.Repository
         List<string> TiposDeContas();
 
         //void Remover(int numeroConta);
-        
-        
+
+
         //void Atualizar(Conta conta);
+
+        void Save();
     }
 }

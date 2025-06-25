@@ -1,64 +1,61 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Oo.Ddd.Bank.WebApp.Models;
-using System.Net.Http;
+using Oo.Ddd.Bank.WebApp.Services;
 
 public class ContaController : Controller
 {
-    private readonly IHttpClientFactory _httpClientFactory;
-    private static ContaModel conta = new ContaModel
+    private readonly BankApiClient _bankApiClient;
+    
+    public ContaController(BankApiClient httpClient)
     {
-        NumeroConta = "12345",
-        Senha = "senha123",
-        Saldo = 1000
-    };
-
-    public ContaController(IHttpClientFactory httpClientFactory)
-    {
-        _httpClientFactory = httpClientFactory;
+        _bankApiClient = httpClient;
     }
 
     public IActionResult Login() => View();
 
     [HttpPost]
-    public IActionResult Login(ContaModel model)
+    public IActionResult Login(ContaModel contaModel)
     {
-        var client = _httpClientFactory.CreateClient();
+        var result = _bankApiClient.LoginAsync(contaModel.NumeroConta, contaModel.Senha).Result;
 
-        var result = client.PostAsJsonAsync("http://localhost:5111/api/login",
-            new LoginReq()
-            {
-                NumeroDaConta = int.Parse(model.NumeroConta),
-                Senha = model.Senha
-            }).Result;
-
-        if (!result.IsSuccessStatusCode)
+        if (string.IsNullOrEmpty(result.Token))
         {
             ModelState.AddModelError("", "Erro ao autenticar. Verifique os dados e tente novamente.");
-            return View(model);
+            return View(contaModel);
         }
 
-        ContaRes saldoResult = client.GetFromJsonAsync<ContaRes>("http://localhost:5111/api/Conta/1").Result;
-        conta.Saldo = saldoResult.Saldo;
-
-        return RedirectToAction("Saldo");
+        
+        return RedirectToAction("Saldo", new { numeroConta = contaModel.NumeroConta });
     }
 
-    public IActionResult Saldo() => View(conta);
+    public IActionResult Saldo(string numeroConta) {
+        ContaRes saldoResult = _bankApiClient.GetSaldoAsync(numeroConta).Result;
+        ContaModel conta = new ContaModel
+        {
+            NumeroConta = saldoResult.NumeroConta.ToString(),
+            Saldo = saldoResult.Saldo
+        };
+        
+        return View(conta);
+    }
 
-    public IActionResult Transferir() => View();
+    public IActionResult Transferir(string numeroConta) {
+        return View(new TransferenciaModel
+        {
+            NumeroContaOrigem = numeroConta
+        }); 
+    }
 
     [HttpPost]
     public IActionResult Transferir(TransferenciaModel model)
     {
-        if (model.Valor <= conta.Saldo)
+        var transfRes = _bankApiClient.TransferirAsync(model).Result;
+        if(transfRes == null)
         {
-            conta.Saldo -= model.Valor;
-            return RedirectToAction("Comprovante", model);
+            ModelState.AddModelError("", "Saldo insuficiente para a transferência.");
+            return View(model);
         }
-
-        ModelState.AddModelError("", "Saldo insuficiente para a transferência.");
-        
-        return View();
+        return RedirectToAction("Comprovante", model);
     }
 
     public IActionResult Comprovante(TransferenciaModel model) => View(model);

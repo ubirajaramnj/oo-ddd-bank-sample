@@ -1,3 +1,5 @@
 ﻿@model ContaModel
+<input type="hidden" asp-for="NumeroConta" />
+<h2>Conta: @Model.NumeroConta.ToString()</h2>
 <h2>Saldo: @Model.Saldo.ToString("C")</h2>
-<a asp-action="Transferir">Transferir</a>
+<a asp-action="Transferir" asp-route-numeroConta="@Model.NumeroConta">Transferir</a>

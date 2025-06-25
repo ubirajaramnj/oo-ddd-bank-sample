@@ -1,5 +1,6 @@
 ﻿@model TransferenciaModel
 <form asp-action="Transferir" method="post">
+    <input type="hidden" asp-for="NumeroContaOrigem" />
     <div>
         <label>Banco:</label>
         <input asp-for="Banco" />

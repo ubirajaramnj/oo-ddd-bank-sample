@@ -13,7 +13,6 @@ namespace Oo.Ddd.Bank.Domain.Model.Factory
             return new Conta
             {
                 Cliente = cliente,
-                Numero = numero
             };
         }
 
@@ -23,7 +22,6 @@ namespace Oo.Ddd.Bank.Domain.Model.Factory
             {
                 Limite = limite,
                 Saldo = 0,
-                Numero = numero,
                 Cliente = cliente
             };
         }
